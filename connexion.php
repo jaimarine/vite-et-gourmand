@@ -111,6 +111,13 @@ function e(string $texte): string
 </head>
 
 <body>
+    
+    <body>
+
+    <!-- Accessibilité RGAA : accès direct au contenu principal -->
+    <a class="lien-evitement" href="#contenu-principal">
+        Aller au contenu principal
+    </a>
 
 <header>
     <nav class="navigation" aria-label="Navigation principale">
@@ -124,18 +131,25 @@ function e(string $texte): string
     </nav>
 </header>
 
-<main class="page-formulaire">
+
+<main id="contenu-principal"
+      class="page-formulaire"
+      tabindex="-1">
+
 
     <h1>Connexion</h1>
 
     <p>Connectez-vous à votre espace personnel.</p>
 
     <!-- Affichage d'une erreur éventuelle -->
-    <?php if ($erreur !== ''): ?>
-        <div class="message-erreur" role="alert">
-            <?= e($erreur) ?>
-        </div>
-    <?php endif; ?>
+    <!-- Accessibilité RGAA : message d'erreur identifiable -->
+        <?php if ($erreur !== ''): ?>
+            <div id="erreur-connexion"
+                class="message-erreur"
+                role="alert">
+                <?= e($erreur) ?>
+            </div>
+        <?php endif; ?>
 
     <!-- Formulaire de connexion -->
     <form method="POST"
@@ -146,14 +160,20 @@ function e(string $texte): string
             Adresse e-mail
         </label>
 
+
         <input
             type="email"
             id="email"
             name="email"
             value="<?= e($email) ?>"
             autocomplete="email"
+            <?php if ($erreur !== ''): ?>
+                aria-describedby="erreur-connexion"
+                aria-invalid="true"
+            <?php endif; ?>
             required
         >
+
 
         <label for="mot_de_passe">
             Mot de passe

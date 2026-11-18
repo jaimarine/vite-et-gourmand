@@ -26,7 +26,7 @@ $pageTitle = "Vite & Gourmand - Traiteur à Bordeaux";
 </head>
 
 <body>
-
+    
     <!-- EN-TÊTE : logo et navigation principale -->
     <header>
         <nav class="navigation" aria-label="Navigation principale">
@@ -45,7 +45,8 @@ $pageTitle = "Vite & Gourmand - Traiteur à Bordeaux";
     </header>
 
     <!-- MAIN : contenu principal de la page -->
-    <main>
+    <main id="contenu-principal" tabindex="-1">
+
 
         <!-- SECTION 1 : présentation principale -->
         <section class="hero">
