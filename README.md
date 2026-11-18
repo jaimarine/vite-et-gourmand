@@ -130,13 +130,11 @@ Ce projet est réalisé dans le cadre de l'Évaluation en Cours de Formation (EC
 
 
 
-5\. Importer les scripts SQL présents dans `database/` :
-
-&#x20;  - `schema.sql`
-
-&#x20;  - `migrations/001\_ajout\_actif\_menus.sql`
-
-&#x20;  - `donnees.sql`
+5. Importer les scripts SQL dans cet ordre :
+   - `database/schema.sql` : création des tables principales
+   - `database/migrations/001_ajout_actif_menus.sql` : ajout du champ actif aux menus
+   - `database/commandes.sql` : création de la table des commandes
+   - `database/donnees.sql` : insertion des données initiales
 
 
 
