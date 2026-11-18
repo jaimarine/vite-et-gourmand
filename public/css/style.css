@@ -8,7 +8,7 @@
 :root {
     --vert: #234b38;
     --creme: #faf6ed;
-    --orange: #c87935;
+    --orange: #9d5a22;
     --texte: #252525;
 }
 
@@ -683,4 +683,53 @@ a:focus-visible {
         overflow-x: auto;
         white-space: nowrap;
     }
+}
+
+
+/* ==========================================
+   ACCESSIBILITÉ RGAA
+   Visibilité du focus clavier
+   ========================================== */
+
+/* Focus visible sur les éléments interactifs */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid #005fcc;
+    outline-offset: 3px;
+}
+
+/* Améliore la visibilité du focus dans la navigation */
+.navigation a:focus-visible,
+footer a:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 4px;
+    border-radius: 3px;
+}
+
+/* ==========================================
+   ACCESSIBILITÉ RGAA
+   Lien d'évitement
+   ========================================== */
+
+.lien-evitement {
+    position: absolute;
+    top: 10px;
+    left: -9999px;
+    z-index: 1000;
+
+    padding: 12px 20px;
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #000000;
+    border-radius: 4px;
+
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.lien-evitement:focus {
+    left: 10px;
 }
