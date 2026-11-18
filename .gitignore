@@ -1,0 +1,25 @@
+
+# Configuration locale et identifiants
+.env
+.env.*
+!.env.example
+
+# Sauvegardes de bases de données privées
+*-sauvegarde.sql
+*.sql.gz
+
+# Fichiers temporaires
+*.log
+*.tmp
+
+# Fichiers propres aux systèmes et éditeurs
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Scripts de test temporaires
+/test/
+/test-database.php
+
+# Sauvegardes temporaires
+/gestion-menus-save.txt

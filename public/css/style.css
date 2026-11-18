@@ -1,0 +1,686 @@
+
+/* ==========================================
+   1. VARIABLES DE COULEURS
+   Centralisation des couleurs du site.
+   Cela facilite les changements de design.
+   ========================================== */
+
+:root {
+    --vert: #234b38;
+    --creme: #faf6ed;
+    --orange: #c87935;
+    --texte: #252525;
+}
+
+/* ==========================================
+   2. STYLES GÉNÉRAUX
+   ========================================== */
+
+/* Inclut les bordures et marges internes
+   dans le calcul de la largeur des éléments. */
+* {
+    box-sizing: border-box;
+}
+
+/* Style général de toutes les pages */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: var(--texte);
+    background: var(--creme);
+    line-height: 1.6;
+}
+
+/* ==========================================
+   3. BARRE DE NAVIGATION
+   ========================================== */
+
+/* Flexbox permet d'aligner le logo et les liens */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px 8%;
+    background: var(--vert);
+}
+
+/* Apparence du logo textuel */
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Affichage horizontal des liens */
+.navigation ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Couleur des liens de navigation */
+.navigation a {
+    color: white;
+}
+
+/* ==========================================
+   4. SECTION PRINCIPALE
+   ========================================== */
+
+/* Zone d'accueil mise en avant */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: #e9dfcc;
+}
+
+/* clamp() adapte la taille du titre à l'écran */
+.hero h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    color: var(--vert);
+}
+
+/* Bouton principal du site */
+.bouton {
+    display: inline-block;
+    padding: 12px 25px;
+    margin-top: 20px;
+    background: var(--orange);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+/* Changement de couleur au survol */
+.bouton:hover {
+    background: #9d5a22;
+}
+
+/* ==========================================
+   5. PRÉSENTATION ET AVIS CLIENTS
+   ========================================== */
+
+/* Styles communs aux deux sections */
+.presentation,
+.avis {
+    padding: 60px 8%;
+    text-align: center;
+}
+
+/* Fond blanc pour distinguer la présentation */
+.presentation {
+    background: white;
+}
+
+/* ==========================================
+   6. PIED DE PAGE
+   ========================================== */
+
+footer {
+    background: var(--vert);
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+}
+
+/* Les liens restent visibles sur fond sombre */
+footer a {
+    color: white;
+}
+
+/* ==========================================
+   7. ACCESSIBILITÉ
+   ========================================== */
+
+/* Rend le focus clavier visible pour les liens */
+a:focus-visible {
+    outline: 3px solid var(--orange);
+    outline-offset: 4px;
+}
+
+/* ==========================================
+   8. RESPONSIVE DESIGN
+   Adaptation aux écrans de 600px ou moins.
+   ========================================== */
+
+@media (max-width: 600px) {
+
+    /* Navigation verticale sur petit écran */
+    .navigation {
+        flex-direction: column;
+    }
+
+    /* Centrage des liens de navigation */
+    .navigation ul {
+        justify-content: center;
+    }
+
+    /* Réduction des espacements sur mobile */
+    .hero {
+        padding: 60px 20px;
+    }
+}
+
+/* ==========================================
+   PAGE CATALOGUE DES MENUS
+   ========================================== */
+
+/* Espacement général du catalogue */
+.catalogue {
+    padding: 40px 8%;
+}
+
+/* Présentation de la zone de filtres */
+.filtres {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+    padding: 25px;
+    margin: 30px 0;
+    background: white;
+    border-radius: 10px;
+}
+
+/* Le titre occupe toute la largeur */
+.filtres h2 {
+    width: 100%;
+    margin-top: 0;
+}
+
+/* Style des champs de formulaire */
+.filtres input,
+.filtres select {
+    padding: 10px;
+    border: 1px solid #777;
+    border-radius: 5px;
+    max-width: 100%;
+}
+
+/* Grille adaptative des menus */
+.grille-menus {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(100%, 260px), 1fr)
+    );
+    gap: 25px;
+    margin-top: 25px;
+}
+
+/* Apparence d'une carte de menu */
+.carte-menu {
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Couleur du titre de chaque carte */
+.carte-menu h3 {
+    color: var(--vert);
+}
+
+/* Mise en avant du prix */
+.prix-menu {
+    color: var(--vert);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Cache les cartes exclues par les filtres */
+.carte-menu[hidden] {
+    display: none;
+}
+
+/*
+ * CORRECTION DU FILTRAGE
+ *
+ * L'attribut hidden est ajouté par JavaScript
+ * aux cartes qui ne correspondent pas aux filtres.
+ *
+ * Cette règle garantit qu'une carte masquée
+ * ne sera pas affichée par les styles CSS.
+ */
+
+.carte-menu[hidden] {
+    display: none !important;
+}
+
+/* ==========================================
+   PAGE DE DÉTAIL D'UN MENU
+   ========================================== */
+
+/* Conteneur principal de la page */
+.detail-menu {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 50px 25px;
+}
+
+/* Titre du menu */
+.detail-menu h1 {
+    color: var(--vert);
+    font-size: clamp(28px, 4vw, 42px);
+}
+
+/* Bloc contenant les informations principales */
+.infos-menu {
+    background: white;
+    padding: 25px;
+    margin: 30px 0;
+    border-radius: 10px;
+}
+
+/* Carte représentant un plat */
+.plat-menu {
+    background: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border-left: 5px solid var(--vert);
+}
+
+/* Mise en évidence des conditions de commande */
+.conditions-menu {
+    background: #fff2df;
+    border: 2px solid #a65a18;
+    border-radius: 10px;
+    padding: 25px;
+    margin: 30px 0;
+}
+
+/* Titre des conditions */
+.conditions-menu h2 {
+    color: #713b0d;
+}
+
+/* ==========================================
+   PAGE D'INSCRIPTION CLIENT
+   ========================================== */
+
+/* Conteneur principal du formulaire */
+.page-formulaire {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+/* Organisation verticale des champs */
+.formulaire-client {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 25px 0;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+}
+
+/* Mise en forme des étiquettes */
+.formulaire-client label {
+    font-weight: bold;
+    color: var(--vert);
+}
+
+/* Apparence des champs */
+.formulaire-client input,
+.formulaire-client textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #777;
+    border-radius: 5px;
+    font: inherit;
+}
+
+/* Dimensions du champ adresse */
+.formulaire-client textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+/* Alignement du bouton */
+.formulaire-client .bouton {
+    border: none;
+    cursor: pointer;
+    font: inherit;
+}
+
+/* Message en cas d'erreur */
+.message-erreur {
+    padding: 15px;
+    background: #fff0f0;
+    color: #842020;
+    border-left: 5px solid #a52222;
+    border-radius: 5px;
+}
+
+/* Message en cas de réussite */
+.message-succes {
+    padding: 15px;
+    background: #e8f5e9;
+    color: #195c2d;
+    border-left: 5px solid #26733d;
+    border-radius: 5px;
+}
+
+/* Texte d'aide sous le mot de passe */
+.aide-champ {
+    margin: 0 0 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* ==========================================
+   GESTION DES EMPLOYÉS
+   ========================================== */
+
+/* La page dispose de plus de largeur
+   pour accueillir le tableau. */
+.page-formulaire.gestion-employes {
+    max-width: 1000px;
+}
+
+/* Espacement des différentes sections. */
+.gestion-employes section {
+    margin-top: 35px;
+}
+
+/* Permet le défilement horizontal sur mobile. */
+.tableau-defilant {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* Tableau de gestion des comptes. */
+.tableau-employes {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+}
+
+/* Cellules du tableau. */
+.tableau-employes th,
+.tableau-employes td {
+    padding: 14px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+/* En-tête du tableau. */
+.tableau-employes th {
+    background: #234b38;
+    color: white;
+}
+
+/* Alternance des lignes. */
+.tableau-employes tbody tr:nth-child(even) {
+    background: #f5f5f5;
+}
+
+/* Évite une marge inutile sur les formulaires
+   présents dans le tableau. */
+.tableau-employes form {
+    margin: 0;
+}
+
+/* ==========================================
+   GESTION DES MENUS
+   ========================================== */
+
+/* Élargissement de la page pour le tableau. */
+.page-formulaire.gestion-menus {
+    max-width: 1100px;
+}
+
+/* Espacement des sections. */
+.gestion-menus section {
+    margin-top: 35px;
+}
+
+/* Apparence des listes déroulantes. */
+.formulaire-client select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #777;
+    border-radius: 5px;
+    background: white;
+    font: inherit;
+}
+
+/* Amélioration de la lisibilité du tableau. */
+.gestion-menus .tableau-employes td {
+    vertical-align: middle;
+}
+
+/* ==========================================
+   FORMULAIRE DE MODIFICATION D'UN MENU
+   ========================================== */
+
+/* Formulaire centré */
+.formulaire-modification {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 30px;
+
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+}
+
+/* Étiquettes */
+.formulaire-modification label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Champs */
+.formulaire-modification input:not([type="hidden"]),
+.formulaire-modification textarea {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Descriptions */
+.formulaire-modification textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+/* Bouton d'enregistrement */
+.formulaire-modification button {
+    margin-top: 20px;
+    padding: 12px;
+    cursor: pointer;
+}
+/* Formulaire de modification des menus */
+.formulaire-modification {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+}
+
+
+/*
+ * PROJET : Vite & Gourmand
+ * STYLE : Page de commande
+ */
+
+/* Fond et typographie de la page */
+.page-commande {
+    background-color: #f5f6f4;
+    color: #263b31;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 30px 15px;
+    box-sizing: border-box;
+}
+
+/* Conteneur principal */
+.page-commande .conteneur-commande {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Titres */
+.page-commande h1 {
+    text-align: center;
+    color: #245c3d;
+    margin-bottom: 30px;
+}
+
+.page-commande h2 {
+    color: #245c3d;
+    margin-top: 25px;
+}
+
+/* Formulaire de commande */
+.page-commande .formulaire-commande {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 25px;
+}
+
+/* Chaque groupe champ + label */
+.page-commande .formulaire-commande > div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+/* Libellés */
+.page-commande .formulaire-commande label {
+    font-weight: bold;
+    color: #344c3e;
+}
+
+/* Champs de saisie */
+.page-commande .formulaire-commande input,
+.page-commande .formulaire-commande textarea {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #cbd5d1;
+    border-radius: 6px;
+    font-size: 15px;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+/* Mise en évidence du champ sélectionné */
+.page-commande .formulaire-commande input:focus,
+.page-commande .formulaire-commande textarea:focus {
+    outline: 2px solid #409568;
+    outline-offset: 1px;
+}
+
+/* Bouton de validation */
+.page-commande .bouton-commande {
+    background-color: #246b45;
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 7px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.page-commande .bouton-commande:hover {
+    background-color: #194f32;
+}
+
+/* Lien de retour */
+.page-commande .conteneur-commande > a {
+    display: inline-block;
+    margin-top: 25px;
+    color: #246b45;
+    font-weight: bold;
+}
+
+/* Adaptation aux téléphones */
+@media (max-width: 600px) {
+    .page-commande {
+        padding: 15px 10px;
+    }
+
+    .page-commande .conteneur-commande {
+        padding: 20px 15px;
+    }
+
+    .page-commande h1 {
+        font-size: 25px;
+    }
+}
+/*
+ * ÉTAPE 19.2.7 : TABLEAU DES COMMANDES
+ *
+ * Améliore la lisibilité des commandes
+ * dans l'espace personnel du client.
+ */
+
+.tableau-commandes {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.tableau-commandes th,
+.tableau-commandes td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.tableau-commandes th {
+    background-color: #2c3e50;
+    color: white;
+}
+
+.tableau-commandes tbody tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+
+.tableau-commandes tbody tr:hover {
+    background-color: #e8f0f7;
+}
+
+/* Permet de consulter toutes les colonnes sur mobile. */
+@media (max-width: 768px) {
+    .tableau-commandes {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
